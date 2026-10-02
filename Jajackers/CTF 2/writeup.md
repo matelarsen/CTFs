@@ -1,8 +1,12 @@
 # Write-up: Letters Never Sent (Cryptography)
 
+![Página previa al reto](images/Inicio.png)
+
 ## Introducción
 
 El reto **"Letters Never Sent"** de POCTF consistía en descifrar un texto cifrado a partir de varias pistas incluidas en el propio desafío.
+
+![Página del reto](images/Reto.png)
 
 El ciphertext proporcionado era:
 
@@ -16,9 +20,6 @@ Sabíamos además que la flag final debía comenzar con el formato habitual:
 POCTF{...}
 ```
 
-![Página previa al reto](images/Inicio.png)
-
-![Página del reto](images/Reto.png)
 
 ## Proceso de resolución
 
@@ -85,6 +86,8 @@ Los caracteres que no pertenecen al alfabeto, como `{`, `}`, números y puntos, 
 
 Como primera comprobación utilizamos el decoder de **Beaufort Cipher** de dCode.
 
+![Descifrado con dCode](images/ResueltoDCode.png)
+
 Configurando:
 
 ```text
@@ -98,7 +101,6 @@ se obtuvo:
 POCTF{2.570.PAJIVZIVBRLWGWE7.FD6LFLRNMTDULUNPOY2BSWBTZC}
 ```
 
-![Descifrado con dCode](images/ResueltoDCode.png)
 
 ### 5. Script en Python
 
@@ -126,13 +128,16 @@ for char in ciphertext:
 print("".join(result))
 ```
 
-La salida del script es:
+Imágen usando el script en la terminal:
+
+![Salida del script](images/Script.png)
+
+Se obtuvo la flag:
 
 ```text
 POCTF{2.570.PAJIVZIVBRLWGWE7.FD6LFLRNMTDULUNPOY2BSWBTZC}
 ```
 
-![Salida del script](images/Script.png)
 
 ## Flag
 
