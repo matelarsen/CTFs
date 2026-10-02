@@ -99,6 +99,23 @@ Salida de la consulta en la terminal:
 
 ![Explotación exitosa](./images/Imagen5.png)
 
+### 6. Automatización del exploit (`exploit.py`)
+
+Una vez validada manualmente la cadena de explotación (intercambio de sesión + query anidada `me -> team -> members`), se escribió el script `exploit.py` para automatizar todo el proceso en una sola ejecución, sin tener que repetir los comandos `curl` a mano cada vez.
+
+El script hace, en orden, exactamente los mismos dos pasos que se hicieron manualmente en los puntos 1 y 5:
+
+1. **Intercambia el token de sesión por una cookie válida** (`exchange_session`), reproduciendo la llamada a `/session/exchange` del Paso 1, pero manteniendo la sesión autenticada en un objeto `requests.Session()` para no tener que gestionar el archivo `cookies.txt` a mano.
+2. **Envía la query de explotación** (`run_graphql` con `EXPLOIT_QUERY`), que es la misma consulta `{ me { team { members { username role privateNotes } } } }` armada en el Paso 5.
+3. **Recorre la lista de miembros devuelta** y busca automáticamente al usuario con `role == "ADMIN"`, imprimiendo su `privateNotes` (donde está la flag) sin que haya que leerlo a mano del JSON de respuesta.
+
+En otras palabras, `exploit.py` no agrega ninguna técnica nueva respecto de lo explicado en los pasos anteriores pero permite volver a obtener la flag con un solo comando, pasándole un token de sesión vigente como argumento:
+
+```bash
+python3 exploit.py <TOKEN_DE_SESION_DEL_EQUIPO>
+```
+
+
 ## Validación y flag
 
 Al combinar el análisis del schema con la explotación de la ruta no protegida, se obtuvo la flag final:
@@ -113,4 +130,4 @@ Flag obtenida:
 
 ## Conclusión
 
-La vulnerabilidad consistió en que el control de acceso estaba implementado solo en la query `user(id)`, pero no en la resolución de `privateNotes` al acceder a los miembros del equipo a través de `Team.members`. Esto permitió leer información privada de otro usuario del mismo equipo y obtener la flag final.
+La vulnerabilidad consistió en que el control de acceso estaba implementado solo en la query `user(id)`, pero no en la resolución de `privateNotes` al acceder a los miembros del equipo a través de `Team.members`. Esto permitió leer información privada de otro usuario del mismo equipo y obtener la flag final. El script `exploit.py`, incluido junto a este writeup, automatiza la cadena de explotación completa (intercambio de sesión + query anidada) como prueba de concepto reproducible.
