@@ -1,5 +1,7 @@
 # Write-up: Everything Left Open (Forensics)
 
+![Página del reto](images/desafio.png)
+
 ## Introducción
 
 El desafío **"Everything Left Open"** pertenecía a la categoría **Forensics**.  
@@ -10,13 +12,13 @@ POCTF{...}
 ```
 
 El enunciado indicaba que el equipo había sido recuperado con el navegador abierto y que existían datos ingresados a medio completar en un formulario. Esto sugería que la información buscada podía encontrarse en el estado de la sesión del navegador.
+![Readme incluido](images/Readme.png)
 
-![Página del reto](images/desafio.png)
 
 ## Descripción del reto
 
 Al descomprimir el archivo proporcionado por el desafío se obtuvo la estructura de un perfil de usuario de **Mozilla Firefox**, identificado por la carpeta:
-
+![Archivos](images/Archivos2.png)
 ```text
 k-vance-profile/
 ```
@@ -56,7 +58,6 @@ sessionstore-backups/recovery.jsonlz4
 
 Este archivo contenía información correspondiente al estado de la sesión recuperada.
 
-<!-- Agregar captura de los archivos del perfil -->
 ![Perfil de Firefox](images/perfil.png)
 
 ### 2. Análisis de `recovery.jsonlz4`
