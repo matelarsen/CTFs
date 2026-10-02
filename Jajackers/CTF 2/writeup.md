@@ -39,6 +39,22 @@ Esta frase era una pista importante, ya que Francis Beaufort da nombre al **cifr
 
 Además de la carta, había varias palabras marcadas con **estrellas rojas** alrededor del desafío.
 
+Borde superior:
+
+![Obtención de la clave superior](images/ClaveSuperior.png)
+
+Borde derecho girado 90 grados:
+
+![Obtención de la clave derecha](images/ClaveDerecha.png)
+
+Borde inferior:
+
+![Obtención de la clave inferior](images/ClaveInferior.png)
+
+Borde izquierdo girado 90 grados:
+
+![Obtención de la clave izquierda](images/ClaveIzquierda.png)
+
 Leyéndolas en el orden correspondiente, las letras destacadas formaban:
 
 ```text
@@ -51,14 +67,7 @@ Por lo tanto, tomamos:
 Clave = NOVENA
 ```
 
-![Obtención de la clave superior](images/ClaveSuperior.png)
 
-
-![Obtención de la clave derecha](images/ClaveDerecha.png)
-
-![Obtención de la clave inferior](images/ClaveInferior.png)
-
-![Obtención de la clave izquierda](images/ClaveIzquierda.png)
 ### 3. Identificación del cifrado
 
 Con las dos pistas principales:
